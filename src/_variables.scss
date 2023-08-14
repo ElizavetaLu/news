@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@900&display=swap');
+
+$main_text_color: #333333;
+$light_text_color: #999999;
+
+$space-between-sections: 120px;
+$space-between-sections_mobile: 80px;
+
+$success: #7cd47a;
+$danger: #d9534f;
+
+
+@mixin container {
+    width: 100%;
+    max-width: 1320px;
+    padding: 0 40px;
+    margin: 0 auto;
+}
+
+@mixin mobile_container-padding {
+    padding: 0 16px;
+}
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin row_align-center {
+    display: flex;
+    align-items: center;
+} 

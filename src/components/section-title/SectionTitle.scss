@@ -1,0 +1,26 @@
+@import "../../variables";
+
+.section-title {
+    @include row_align-center;
+    justify-content: space-between;
+
+    &__title {
+        font-size: 35px;
+        font-weight: 600;
+        text-transform: capitalize
+    }
+
+    &__link {
+        @include row_align-center;
+        cursor: pointer;
+    }
+
+    &__link-text {
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    &__link-icon {
+        width: 37px;
+    }
+}

@@ -1,0 +1,45 @@
+@import "../../variables";
+
+.link {
+    @include row_align-center;
+    position: relative;
+    padding-right: 35px;
+
+
+    &__text {
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    &__circle,
+    &__icon {
+        position: absolute;
+        transition: all .4s ease;
+    }
+
+    &__circle {
+        z-index: -1;
+        left: 20%;
+        width: 40px;
+        height: 40px;
+        border-radius: 50px;
+        background-color: #e3e3e3;
+
+    }
+
+    &__icon {
+        right: 0;
+        width: 30px;
+    }
+
+    &:hover {}
+
+    &:hover>&__icon {
+        right: -15px;
+        filter: invert(100%) sepia(0%) saturate(7498%) hue-rotate(183deg) brightness(94%) contrast(108%);    }
+
+    &:hover>&__circle {
+        left: 83%;
+        background-color: #333;
+    }
+}

@@ -1,0 +1,69 @@
+@import "../../../../variables";
+
+
+$quantity: 15;
+
+.search {
+    // .star {
+    //     position: fixed;
+    //     left: 50%;
+    //     top: 50%;
+    //     width: 0.2vw;
+    //     height: 0.2vw;
+    //     margin: -0.2vw 0 0 9.8vw;
+    //     animation: ease 200s alternate infinite;
+    //     pointer-events: none;
+
+    //     &::before,
+    //     &::after {
+    //         content: '';
+    //         position: absolute;
+    //         width: 100%;
+    //         height: 100%;
+    //         border-radius: 50%;
+    //         transform-origin: -10vw;
+    //     }
+
+    //     &::before {
+    //         background: #151515;
+    //         opacity: 0.4;
+    //         animation: drift ease alternate infinite;
+    //     }
+
+    //     &::after {
+    //         background: white;
+    //         opacity: 0;
+    //         box-shadow: 0 0 0vw 0vw #ddf4ff;
+    //         animation: drift ease alternate infinite, flash ease infinite;
+    //     }
+    // }
+
+    background-image: url('../../../../../public/images/main-img.jpg');
+    background-size: cover;
+    height: 600px;
+    @include row_align-center;
+    justify-content: center;
+    margin-bottom: $space-between-sections;
+
+    &__form {
+        display: flex;
+    }
+
+    &__input {
+        border-bottom: 2px solid #fff;
+        width: 35vw;
+        padding-left: 10px;
+        padding-right: 50px;
+        font-size: 20px;
+        color: #fff;
+    }
+
+    &__btn {
+        margin-left: -40px;
+    }
+
+    &__btn-icon {
+        width: 36px;
+        margin-bottom: 5px;
+    }
+} 

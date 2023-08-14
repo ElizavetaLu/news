@@ -1,0 +1,8 @@
+@import "../../../../variables";
+
+.latest-headings {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: $space-between-sections;
+}

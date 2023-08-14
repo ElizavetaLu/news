@@ -1,0 +1,13 @@
+@import "../../variables";
+
+.logo {
+    @include row_align-center; 
+
+    &__text {
+        text-transform: capitalize;
+        font-size: 50px;
+        font-family: 'Merriweather';
+        word-spacing: 10px;
+        color: #0d0d0d;
+    }
+}

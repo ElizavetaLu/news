@@ -1,0 +1,30 @@
+@import "../../../../variables";
+
+.news-section {
+    margin-bottom: $space-between-sections;
+
+    &__cards {
+        margin-top: 32px;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        grid-column-gap: 30px;
+        grid-row-gap: 20px;
+    }
+
+    .news-card:first-child {
+        grid-area: 1 / 1 / 4 / 4;
+    }
+
+    .news-card:nth-child(2) {
+        grid-area: 3 / 4 / 4 / 6;
+    }
+
+    .news-card:nth-child(3) {
+        grid-area: 2 / 4 / 3 / 6;
+    }
+
+    .news-card:nth-child(4) {
+        grid-area: 1 / 4 / 2 / 6;
+    }
+}
