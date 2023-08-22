@@ -11,8 +11,8 @@ const Header = () => {
     const [viewMore, toggle] = useToggle();
 
     return (
-        <Container>
-            <header className="header">
+        <header className="header">
+            <Container>
                 <div className="header__wrapper">
                     <div className="header__left-side">
                         <button className="header__button">
@@ -24,7 +24,7 @@ const Header = () => {
                     </div>
 
                     <Logo />
-                    
+
                     <div className="header__right-side">
                         <button className="header__button">
                             <img className="header__button-icon" src="/images/socials/twitter.png" alt="Twitter" />
@@ -46,7 +46,7 @@ const Header = () => {
                         {
                             topics.slice(0, 9).map(item => {
                                 return (
-                                    <Link key={item} to='' className="navigation__list-item">{item}</Link>
+                                    <Link key={item} to={`topic/${item}`} className="navigation__list-item">{item}</Link>
                                 )
                             })
                         }
@@ -57,7 +57,7 @@ const Header = () => {
                         {
                             topics.slice(9).map(item => {
                                 return (
-                                    <Link key={item} to='' className="navigation__list-item">{item}</Link>
+                                    <Link key={item} to={`topic/${item}`} className="navigation__list-item">{item}</Link>
                                 )
                             })
                         }
@@ -67,8 +67,8 @@ const Header = () => {
                         <img className={`navigation__btn-icon ${viewMore && 'navigation__btn-icon--rotate'}`} src="/images/icons/double-down.png" alt="" />
                     </button>
                 </nav>
-            </header>
-        </Container>
+            </Container>
+        </header>
     );
 };
 

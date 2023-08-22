@@ -4,7 +4,13 @@ import { ReactNode } from "react";
 //components
 export type Children = { children: ReactNode };
 export type TSectionTitle = { title: string };
-export type TLinkWithIcon = { linkText: string };
+
+
+
+export interface ILinkWithIcon {
+    linkText: string,
+    navigation: string,
+};
 
 
 export interface ICardData {

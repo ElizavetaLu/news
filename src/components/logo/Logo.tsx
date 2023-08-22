@@ -3,7 +3,7 @@ import "./Logo.scss";
 
 const Logo = () => {
     return (
-        <Link to='home'>
+        <Link to='/'>
             <div className="logo">
                 <span className="logo__text">world news</span>
                 {/* <span className="logo__text">news</span> */}
