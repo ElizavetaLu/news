@@ -1,0 +1,44 @@
+@import "../../variables";
+
+.search {
+    margin-top: 80px ;
+
+    &__form-container {
+        display: flex;
+        flex-direction: column; 
+        align-items: center;
+        gap: 30px;
+        margin-bottom: $space-between-sections ;
+    }
+
+    &__input {
+        width: 40vw;
+        border-bottom: 2px solid #333;
+        font-size: 20px;
+        padding-right: 50px;
+        padding-left: 10px;
+        padding-bottom: 3px;
+
+        &:focus {
+            border-bottom: 2px solid #000;
+        }
+
+        &::placeholder {
+            color: $light_text_color;
+        }
+    }
+
+    &__btn {
+        margin-left: -40px;
+    }
+
+    &__btn-icon {
+        width: 30px;
+    }
+
+    &__results{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+}

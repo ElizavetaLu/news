@@ -3,14 +3,14 @@ import NewsSection from "./sections/news-section/NewsSection";
 import Container from "../../components/container/Container";
 import Search from "./sections/search/Search";
 import { test } from "../../test";
-import "./Home.scss";
+import "./Home.scss"; 
 
 
 const Home = () => {
     return (
         <main className="home">
             <Search />
-            <Container>
+            <Container> 
                 <LatestHeadingsSection />
                 <NewsSection title="sport" data={test} />
                 <NewsSection title="politic" data={test} />

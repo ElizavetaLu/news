@@ -1,9 +1,11 @@
-import { combineReducers } from "redux"; 
-import categoryReducer from "./modalReducer";
+import { combineReducers } from "redux";  
+import latestHeadlinesReducer from "./latestHeadlinesReducer"; 
+import newsBySearchTermReducer from "./newsBySearchTerm";
 
 
 const rootReducers = combineReducers({
-    category: categoryReducer,
+    latestHeadlines: latestHeadlinesReducer,
+    newsBySearchTerm: newsBySearchTermReducer,
 })
 
 export default rootReducers

@@ -12,3 +12,8 @@ axios.defaults.headers.common['x-api-key'] = NEWS_API_KEY;
 export const getLatestHeadlines = ({ lang, pageSize, page }:IGetLatestHeadlines) => {
     return axios.get(`latest_headlines?when=7d&lang=${lang}&page_size=${pageSize}&page=${page}`)
 } 
+
+export const getNewsBySearchTerm = ({ searchTerm, pageSize, page }:any) => {
+    return axios.get(`search?q=${searchTerm}&page_size=${pageSize}&page=${page}`)
+} 
+

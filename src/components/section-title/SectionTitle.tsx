@@ -8,7 +8,7 @@ const SectionTitle = ({ title }: TSectionTitle) => {
     return (
         <div className="section-title">
             <span className="section-title__title">{title}</span>
-            <LinkWithIcon linkText="View more" />
+            <LinkWithIcon linkText="View more" navigation={`/topic/${title}`} />
         </div>
     );
 };
