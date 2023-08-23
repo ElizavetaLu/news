@@ -2,20 +2,28 @@ import { Link } from "react-router-dom";
 import useToggle from "../../hooks/useToggle";
 import { topics } from "../../data";
 import Container from "../container/Container";
-import "./Header.scss";
+import Socials from "../socials/Socials";
 import Logo from "../logo/Logo";
+import "./Header.scss";
+import { useDispatch } from "react-redux";
+import { showSidebar } from "../../store/actions/actionCreators";
+import Sidebar from "./sidebar/Sidebar";
+
 
 
 const Header = () => {
 
+
+    const dispatch = useDispatch();
     const [viewMore, toggle] = useToggle();
+
 
     return (
         <header className="header">
             <Container>
                 <div className="header__wrapper">
                     <div className="header__left-side">
-                        <button className="header__button">
+                        <button className="header__button" onClick={() => dispatch(showSidebar())}>
                             <img className="header__button-icon" src="/images/icons/menu.png" alt="Menu" />
                         </button>
                         <button className="header__button">
@@ -25,20 +33,7 @@ const Header = () => {
 
                     <Logo />
 
-                    <div className="header__right-side">
-                        <button className="header__button">
-                            <img className="header__button-icon" src="/images/socials/twitter.png" alt="Twitter" />
-                        </button>
-                        <button className="header__button">
-                            <img className="header__button-icon" src="/images/socials/facebook.png" alt="Facebook" />
-                        </button>
-                        <button className="header__button">
-                            <img className="header__button-icon" src="/images/socials/instagram.png" alt="Instagram" />
-                        </button>
-                        <button className="header__button">
-                            <img className="header__button-icon" src="/images/socials/youtube.png" alt="Youtube" />
-                        </button>
-                    </div>
+                    <Socials />
                 </div>
 
                 <nav className="navigation">
@@ -68,6 +63,8 @@ const Header = () => {
                     </button>
                 </nav>
             </Container>
+
+            <Sidebar/>
         </header>
     );
 };

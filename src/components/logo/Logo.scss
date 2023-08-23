@@ -9,5 +9,9 @@
         font-family: 'Merriweather';
         word-spacing: 10px;
         color: #0d0d0d;
+
+        &--light{
+            color: #fff;
+        }
     }
 }

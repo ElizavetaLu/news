@@ -17,7 +17,7 @@ const NewsCard = ({ large, horizontal, vertical, cardData }: INewsCard) => {
 
     return (
         <div className={`news-card ${currentClass}`}>
-            <Link to={`/news/${title}`} className={`news-card__link-container news-card__link-container--${currentClass}`}>
+            <Link to={`/news/${title}`} className={`news-card__link-container news-card__link-container--${currentClass}`} state={cardData}>
                 <div className={`news-card__image-container news-card__image-container--${currentClass}`} >
                     <div className="bg"></div>
                     <img className="news-card__image" src={media} alt="" />

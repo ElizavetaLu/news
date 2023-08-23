@@ -6,6 +6,7 @@ import {
     NEWS_BY_SEARCH_TERM_IS_ERROR_OCCURRED,
     NEWS_BY_SEARCH_TERM_IS_FETCHING,
     GET_NEWS_BY_SEARCH_TERM,
+    SHOW_SIDEBAR,
 } from "./types";
 
 
@@ -48,3 +49,7 @@ export const newsBySearchTerm = (isNewDataRequest: boolean, payload: any) => asy
         // dispatch({ type: NEWS_BY_SEARCH_TERM_IS_ERROR_OCCURRED, payload: true });
     }
 }
+
+
+
+export const showSidebar = () => ({ type: SHOW_SIDEBAR });

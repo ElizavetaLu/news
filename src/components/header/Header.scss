@@ -16,17 +16,12 @@
         gap: 15px;
     }
 
-    &__button-icon {
-        width: 27px;
-    }
-
-    &__right-side {
-        @include row_align-center;
-        gap: 8px;
-    }
-
     &__button {
         cursor: pointer;
+    }
+
+    &__button-icon {
+        width: 27px;
     }
 
     .navigation {
@@ -50,8 +45,13 @@
         }
 
         &__list-item {
-            font-size: 18px; 
-            text-transform: capitalize;
+            font-size: 18px;
+            text-transform: capitalize;  
+            transition: all .2s;
+
+            &:hover {
+                transform: translateY(-5px); 
+            }
         }
 
         &__btn {
@@ -76,7 +76,6 @@
             &--rotate {
                 transform: rotate(180deg);
             }
-        } 
+        }
     }
-
 }

@@ -1,0 +1,59 @@
+@import "../../variables";
+
+.news {
+    margin-top: 80px;
+    margin-bottom: $space-between-sections;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__title-row {
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+        margin-bottom: 40px;
+    }
+
+    &__title {
+        font-size: 36px;
+    }
+
+    &__topic {
+        color: $danger;
+        text-transform: capitalize;
+        font-size: 16px;
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        margin-bottom: 15px;
+    } 
+
+    &__info-title {
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    &__info-text {
+        font-size: 16px;
+        font-weight: 400;
+        color: #595959;
+    } 
+
+    &__image {
+        margin-top: 30px;
+        margin-bottom: 50px;
+        align-self: center;
+        width: 60vw;
+        height: 400px;
+        background-size: cover;
+    }
+
+    &__summary {
+        font-size: 20px;
+        text-indent: 50px;
+    }
+}
