@@ -4,6 +4,7 @@ import { ReactNode } from "react";
 //components
 export type Children = { children: ReactNode };
 export type TSectionTitle = { title: string };
+export type TLight = {light?: boolean};
 
 
 

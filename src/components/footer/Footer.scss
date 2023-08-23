@@ -1,0 +1,75 @@
+@import "../../variables";
+
+.footer {
+    background-color: #0d0d0d;
+    padding: 70px 0;
+
+    &__top-row {
+        @include row_align-center;
+        justify-content: space-between;
+        gap: 20px;
+        padding-bottom: 40px;
+        border-bottom: 1px solid $light_text_color;
+    }
+
+    &__navigation {
+        display: flex;
+        gap: 30px;
+    }
+
+    &__navigation-link {
+        font-size: 18px;
+        color: #e6e6e6;
+        text-transform: capitalize;
+        transition: all .2s;
+
+        &:hover {
+            transform: translateY(-5px);
+        }
+    }
+
+    &__bottom-row {
+        margin-top: 50px
+    }
+
+    .subscribe {
+        @include row_align-center;
+        justify-content: center;
+        gap: 25px;
+
+        &__text {
+            color: #fff;
+            font-size: 18px;
+        }
+
+        &__form {
+            display: flex;
+            align-items: flex-end;
+        }
+
+        &__input {
+            border-bottom: 1px solid #fff;
+            padding: 0px 10px 10px 8px;
+            font-size: 18px;
+            text-align: center;
+            min-width: 320px;
+        }
+
+        &__button {
+            cursor: pointer;
+            background-color: #fff;
+            padding: 5px 10px;
+            border-top-right-radius: 2px;
+            border-bottom-right-radius: 2px;
+        }
+
+        &__button-icon {
+            width: 30px;
+        }
+    }
+
+    &__rights {
+        font-size: 14px;
+        text-align: center;
+    }
+}

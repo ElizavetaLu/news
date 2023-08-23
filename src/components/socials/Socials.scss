@@ -1,0 +1,28 @@
+@import "../../variables";
+
+.socials {
+    @include row_align-center;
+    gap: 8px;
+
+    &__social {
+        cursor: pointer;
+    }
+
+    &__social-icon {
+        width: 27px;
+        transition: all .2s ease-out;
+
+        &--light {
+            -webkit-filter: invert(100%);
+            filter: invert(100%);
+        }
+
+        &--Youtube {
+            width: 35px;
+        }
+
+        &:hover{
+            transform: scale(1.1); 
+        }
+    }
+}

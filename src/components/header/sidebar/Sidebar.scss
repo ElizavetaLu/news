@@ -1,0 +1,72 @@
+@import "../../../variables";
+
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    opacity: 0;
+    background-color: #33333314;
+    pointer-events: none;
+    transition: all .3s ease;
+
+    &--active {
+        opacity: 1;
+        pointer-events: all;
+    }
+}
+
+.sidebar {
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    bottom: 0;
+    left: -370px;
+    height: 100vh;
+    width: 350px;
+    background-color: #333;
+    padding: 20px 40px;
+    box-shadow: 10px 0px 15px #2d2d2d37;
+    -webkit-transition: left .4s;
+    -moz-transition: left .4s;
+    transition: left .4s;
+
+    &--active {
+        left: 0;
+    }
+
+    &__header {
+        @include row_align-center;
+        justify-content: space-between;
+    }
+
+    &__semi-circle {
+        height: 50px;
+    }
+
+    &__close-icon {
+        cursor: pointer;
+        width: 50px
+    }
+
+    &__navigation {
+        margin-top: 120px;
+        @include row_align-center;
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    &__navigation-link {
+        text-transform: capitalize;
+        font-size: 28px;
+        font-weight: 400;
+        color: #fff;
+        transition: all .2s;
+
+        &:hover {
+            padding-left: 20px;
+        }
+    }
+}

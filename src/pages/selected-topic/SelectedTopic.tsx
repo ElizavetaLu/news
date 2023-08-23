@@ -1,18 +1,14 @@
-import { useParams } from "react-router-dom";
 import Container from "../../components/container/Container";
 import NewsCard from "../../components/cards/news/NewsCard";
 import { test } from "../../test";
 import "./SelectedTopic.scss";
 
 
-const SelectedTopic = () => {
-
-    const { title } = useParams();
+const SelectedTopic = () => { 
 
     return (
         <Container>
-            <main className="selected-topic">
-                <h3 className="selected-topic__title">{title}</h3>
+            <main className="selected-topic"> 
 
                 <div className="selected-topic__data">
                     <NewsCard key={test[0]._id} large cardData={test[0]} />
