@@ -3,7 +3,8 @@ import SectionTitle from "../../../../components/section-title/SectionTitle";
 import { ICardData, INewsSection } from "../../../../interfacesAndTypes";
 import "./NewsSection.scss";
 
-const NewsSection = ({ title, data }: INewsSection) => {
+// const NewsSection = ({ title, data }: INewsSection) => {
+const NewsSection = ({ title, data }: any) => {
 
     return (
         <section className="news-section">
@@ -14,11 +15,12 @@ const NewsSection = ({ title, data }: INewsSection) => {
 
                 {/* <div className="news-setion__cards-column"> */}
                     {
-                        data.map((item: ICardData, i: number) => {
+                        // data.map((item: ICardData, i: number) => {
+                        data.map((item: any, i: number) => {
                             if (i === 0 || i > 3) return null;
 
                             return (
-                                <NewsCard key={item._id} horizontal cardData={item} />
+                                <NewsCard key={i} horizontal cardData={item} />
                             )
                         })
                     }

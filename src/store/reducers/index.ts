@@ -1,12 +1,12 @@
 import { combineReducers } from "redux";  
-import latestHeadlinesReducer from "./latestHeadlinesReducer"; 
-import newsBySearchTermReducer from "./newsBySearchTerm"; 
+import latestHeadlinesReducer from "./latestHeadlinesReducer";  
 import sidebarReducer from "./sidebarReducer";
+import newsReducer from "./newsReducer";
 
 
 const rootReducers = combineReducers({
-    latestHeadlines: latestHeadlinesReducer,
-    newsBySearchTerm: newsBySearchTermReducer,
+    latestHeadlines: latestHeadlinesReducer, 
+    news: newsReducer,
     sidebar: sidebarReducer,
 })
 

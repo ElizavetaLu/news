@@ -1,0 +1,32 @@
+@import "../../variables";
+
+.search-news {
+    &__input {
+        width: 40vw;
+        border-bottom: 2px solid #333;
+        font-size: 22px;
+        padding-right: 50px;
+        padding-left: 10px;
+        padding-bottom: 4px;
+
+        &--light {
+            border-bottom: 2px solid #fff;
+        }
+
+        &:focus {
+            border-bottom: 2px solid #000;
+        }
+
+        &::placeholder {
+            color: $light_text_color;
+        }
+    }
+
+    &__btn {
+        margin-left: -40px;
+    }
+
+    &__btn-icon {
+        width: 30px;
+    }
+}

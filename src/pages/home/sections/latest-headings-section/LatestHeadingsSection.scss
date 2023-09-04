@@ -5,4 +5,47 @@
     flex-direction: column;
     gap: 32px;
     margin-bottom: $space-between-sections;
+
+    .latest-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+
+        .loading {
+            @include flex-center;
+
+            &--large {
+                height: 500px;
+                width: 60%;
+            }
+
+            &--horizontal {
+                height: 150px;
+                width: 300px;
+            }
+
+            &--vertical {
+                width: 220px;
+                height: 220px;
+            }
+        }
+
+        &__first-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        &__row-block {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        &__second-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+    }
 }

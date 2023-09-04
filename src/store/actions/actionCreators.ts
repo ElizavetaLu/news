@@ -1,12 +1,13 @@
-import { getLatestHeadlines, getNewsBySearchTerm } from "../../services"
+import { INewsRequestPayload } from "../../interfacesAndTypes";
+import { getLatestHeadlines, getNews } from "../../services"
 import {
     LATEST_HEADLINES_IS_ERROR_OCCURRED,
     LATEST_HEADLINES_IS_FETCHING,
-    GET_LATEST_HEADLINES,
-    NEWS_BY_SEARCH_TERM_IS_ERROR_OCCURRED,
-    NEWS_BY_SEARCH_TERM_IS_FETCHING,
-    GET_NEWS_BY_SEARCH_TERM,
+    GET_LATEST_HEADLINES, 
     SHOW_SIDEBAR,
+    GET_NEWS,
+    NEWS_ERROR_OCCURRED,
+    NEWS_ARE_FETCHING, 
 } from "./types";
 
 
@@ -27,26 +28,40 @@ export const latestHeadlines = (payload: any) => async (dispatch: any) => {
         dispatch({ type: LATEST_HEADLINES_IS_ERROR_OCCURRED, payload: true });
     }
 }
+ 
 
-export const newsBySearchTerm = (isNewDataRequest: boolean, payload: any) => async (dispatch: any) => {
+export const news = (isNewDataRequest: boolean, payload: INewsRequestPayload) => async (dispatch: any) => {
 
     try {
 
         // If isNewDataRequest is true - rewrite state news data, otherwise - add new data to array
 
+        // dispatch({ type: NEWS_ERROR_OCCURRED, payload: false });
+        dispatch({ type: NEWS_ARE_FETCHING });
 
-        // dispatch({ type: NEWS_BY_SEARCH_TERM_IS_ERROR_OCCURRED, payload: false });
+        const { data } = await getNews(payload);
 
-        // dispatch({ type: NEWS_BY_SEARCH_TERM_IS_FETCHING });
+        const totalResults = data.totalResults;
+        let pagesAmount = 0;
 
-        const { data } = await getNewsBySearchTerm(payload);
+        if (totalResults) {
+            pagesAmount = Math.ceil((totalResults - 16) / 15) + 1
+        } 
+        
+        dispatch({
+            type: GET_NEWS,
+            payload: {
+                data: data.articles,
+                isNewDataRequest,
+                totalPages: pagesAmount
+            }
+        });
 
-        // dispatch({ type: GET_NEWS_BY_SEARCH_TERM, payload: data.articles });
-        // dispatch({ type: NEWS_BY_SEARCH_TERM_IS_FETCHING });
+        dispatch({ type: NEWS_ARE_FETCHING });
 
     } catch (error) {
-        // dispatch({ type: NEWS_BY_SEARCH_TERM_IS_FETCHING });
-        // dispatch({ type: NEWS_BY_SEARCH_TERM_IS_ERROR_OCCURRED, payload: true });
+        dispatch({ type: NEWS_ARE_FETCHING });
+        dispatch({ type: NEWS_ERROR_OCCURRED, payload: true });
     }
 }
 
