@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { showSidebar } from "../../store/actions/actionCreators";
 import useToggle from "../../hooks/useToggle";
 import { topics } from "../../data";
 import Container from "../container/Container";
 import Socials from "../socials/Socials";
+import Sidebar from "./sidebar/Sidebar";
 import Logo from "../logo/Logo";
 import "./Header.scss";
-import { useDispatch } from "react-redux";
-import { showSidebar } from "../../store/actions/actionCreators";
-import Sidebar from "./sidebar/Sidebar";
 
 
 

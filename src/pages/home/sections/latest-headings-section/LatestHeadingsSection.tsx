@@ -1,12 +1,12 @@
 import { Dispatch, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { latestHeadlines } from "../../../../store/actions/actionCreators";
+import { ICardData } from "../../../../interfacesAndTypes";
+import DataFetchingError from "../../../../components/data-fetching-error/DataFetchingError";
 import SectionTitle from "../../../../components/section-title/SectionTitle";
 import NewsCard from "../../../../components/cards/news/NewsCard";
-import { ICardData } from "../../../../interfacesAndTypes";
 import Loader from "../../../../components/loader/Loader";
 import "./LatestHeadingsSection.scss";
-import DataFetchingError from "../../../../components/data-fetching-error/DataFetchingError";
 
 
 
@@ -21,34 +21,54 @@ const LatestHeadingsSection = () => {
     const { data, isFetching, isErrorOccurred } = useSelector((state: any) => state.latestHeadlines);
 
 
+    const loader = (containerSize: string) => {
+        return (
+            <div className={`loading loading--${containerSize}`}>
+                <Loader />
+            </div>
+        )
+    }
+
+
     return (
         <div className="latest-headings">
             <SectionTitle title="Latest News" />
+
             {
-            <DataFetchingError />
-                // isErrorOccurred && <DataFetchingError />
+                isErrorOccurred && <DataFetchingError />
             }
-            {
-                isFetching
-                    ? <Loader />
 
-                    : <div className="cards">
+            <div className="latest-cards">
+                <div className="latest-cards__first-row">
+
+                    {
+                        isFetching
+                            ? loader('large')
+                            : <NewsCard large cardData={data && data[0]} />
+                    }
+
+                    <div className="latest-cards__row-block">
                         {
-                            data?.map((item: ICardData, i: number) => {
-                                switch (i) {
-                                    case 0:
-                                        return <NewsCard key={item._id} large cardData={item} />;
+                            data?.slice(1, 4).map((item: ICardData, i: number) => {
 
-                                    case 1 || 2 || 3:
-                                        return <NewsCard key={item._id} horizontal cardData={item} />;
-
-                                    default:
-                                        return <NewsCard key={item._id} vertical cardData={item} />;
-                                }
+                                return isFetching
+                                    ? loader('horizontal')
+                                    : <NewsCard key={i} horizontal cardData={item} />;
                             })
                         }
                     </div>
-            }
+                </div>
+
+                <div className="latest-cards__second-row">
+                    {
+                        data?.slice(4).map((item: ICardData, i: number) => {
+                            return isFetching
+                                ? loader('vertical')
+                                : <NewsCard key={i} vertical cardData={item} />;
+                        })
+                    }
+                </div>
+            </div>
         </div>
     );
 };

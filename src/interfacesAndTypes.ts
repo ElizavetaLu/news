@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 //components
 export type Children = { children: ReactNode };
 export type TSectionTitle = { title: string };
-export type TLight = {light?: boolean};
+export type TLight = { light?: boolean };
 
 
 
@@ -13,27 +13,23 @@ export interface ILinkWithIcon {
     navigation: string,
 };
 
+export interface ISearchInterface {
+    placeholder: string,
+    light?: boolean,
+    action?: () => void
+}
 
 export interface ICardData {
     author: string,
-    authors: string,
-    clean_url: string,
-    country: string,
-    excerpt: string,
-    is_opinion: boolean,
-    language: string,
-    link: string,
-    media: string,
-    published_date: string,
-    published_date_precision: string,
-    rank: number,
-    rights: string,
-    summary: string,
+    content: string,
+    description: string,
+    publishedAt: string,
+    source: {
+        id: null | any,
+        name: string
+    },
     title: string,
-    topic: string,
-    twitter_account: string,
-    _id: string,
-    _score: null
+    urlToImage: string
 }
 
 export interface INewsCard {
@@ -54,4 +50,11 @@ export interface IGetLatestHeadlines {
     lang?: string,
     pageSize: number,
     page: number
+}
+
+export interface INewsRequestPayload {
+    category?: string,
+    pageSize: number,
+    page: number,
+    searchTerm?: string,
 }

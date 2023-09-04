@@ -17,16 +17,7 @@ const App = () => {
 
         <Route path='/news/:name' element={<SelectedNews />} />
 
-        <Route path='/topic/:title' element={<SelectedTopic />} />
-
-
-        {/* <Route path='search' element={<Search />} >
-          <Route path=':name' element={<SelectedNews />} />
-        </Route>
-
-        <Route path=':title' element={<SelectedTopic />} >
-          <Route path=':name' element={<SelectedNews />} />
-        </Route> */}
+        <Route path='/topic/:title' element={<SelectedTopic />} /> 
 
         <Route path='*' element={<NoMatch />} />
       </Route >
