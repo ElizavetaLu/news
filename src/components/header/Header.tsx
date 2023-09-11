@@ -13,33 +13,36 @@ import "./Header.scss";
 
 const Header = () => {
 
-
     const dispatch = useDispatch();
     const [viewMore, toggle] = useToggle();
-
 
     return (
         <header className="header">
             <Container>
                 <div className="header__wrapper">
                     <div className="header__left-side">
-                        <button className="header__button" onClick={() => dispatch(showSidebar())}>
+                        <button className="header__button-menu" onClick={() => dispatch(showSidebar())}>
                             <img className="header__button-icon" src="/images/icons/menu.png" alt="Menu" />
                         </button>
-                        <button className="header__button">
+                        <button className="header__button-search">
                             <img className="header__button-icon" src="/images/icons/search.png" alt="Search" />
                         </button>
                     </div>
 
                     <Logo />
 
-                    <Socials />
+                    <div className="header__socials">
+                        <Socials />
+                    </div>
+                    <button className="header__button-mobile">
+                        <img className="header__button-icon" src="/images/icons/search.png" alt="Search" />
+                    </button>
                 </div>
 
                 <nav className="navigation">
                     <div className="navigation__list">
                         {
-                            topics.slice(0, 9).map(item => {
+                            topics.slice(0, 8).map(item => {
                                 return (
                                     <Link key={item} to={`topic/${item}`} className="navigation__list-item">{item}</Link>
                                 )
@@ -50,7 +53,7 @@ const Header = () => {
 
                     <div className={`navigation__list ${!viewMore && 'navigation__list--hidden'}`}>
                         {
-                            topics.slice(9).map(item => {
+                            topics.slice(8).map(item => {
                                 return (
                                     <Link key={item} to={`topic/${item}`} className="navigation__list-item">{item}</Link>
                                 )
@@ -64,7 +67,7 @@ const Header = () => {
                 </nav>
             </Container>
 
-            <Sidebar/>
+            <Sidebar />
         </header>
     );
 };

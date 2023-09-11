@@ -5,8 +5,11 @@ const DataFetchingError = () => {
         <div className="fetching-error">
             <img className="fetching-error__icon" src="/images/icons/earth.png" alt="earth" />
             <p className="fetching-error__text">Something went wrong, try again?</p>
-            <button className="fetching-error__button">Reload</button>
-        </div>
+            <button
+                className="fetching-error__button"
+                onClick={() => window.location.reload()}
+            >Reload</button>
+        </div >
     );
 };
 

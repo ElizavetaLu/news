@@ -5,7 +5,9 @@
     cursor: pointer;
 
     &--vertical {
+        width: 100%;
         max-width: 220px;
+        overflow: hidden;
     }
 
     &__link-container {
@@ -84,10 +86,16 @@
         }
     }
 
+    &__category {
+        color: $danger;
+        font-size: 13px;
+        font-weight: 500;
+        text-transform: capitalize;
+    }
+
     &__author {
         color: #606060;
         text-transform: capitalize;
-        // font-weight: 500;
 
         &--horizontal,
         &--vertical {
@@ -97,6 +105,9 @@
     }
 
     &__title {
+        max-height: 220px;
+        overflow: hidden;
+
         &--large {
             font-size: 24px
         }

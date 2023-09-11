@@ -1,4 +1,4 @@
-export const topics = ['news', 'sport', 'tech', 'world', 'finance', 'politics', 'business', 'economics', 'entertainment', 'beauty', 'travel', 'music', 'food', 'science', 'gaming', 'energy'];
+export const topics = ['business', 'entertainment', 'environment', 'food', 'health', 'politics', 'science', 'sports', 'technology', 'top', 'tourism', 'world'];
 
 export const socials = [
     {
@@ -27,26 +27,37 @@ export const navigation = [
     {
         id: 0,
         name: 'home',
-        path: '/'
+        path: '/',
+        options: null
     },
     {
         id: 1,
-        name: 'about',
-        path: '*'
+        name: 'categories',
+        path: '',
+        options: topics
     },
     {
         id: 2,
-        name: 'search',
-        path: 'search'
+        name: 'about',
+        path: '*',
+        options: null
     },
     {
         id: 3,
-        name: 'work for WN',
-        path: '*'
+        name: 'search',
+        path: 'search',
+        options: null
     },
     {
         id: 4,
+        name: 'work for WN',
+        path: '*',
+        options: null
+    },
+    {
+        id: 5,
         name: 'contacts',
-        path: '*'
+        path: '*',
+        options: null
     }
 ]

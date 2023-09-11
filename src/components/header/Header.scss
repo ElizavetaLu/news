@@ -16,12 +16,17 @@
         gap: 15px;
     }
 
-    &__button {
+    &__button-search,
+    &__button-menu {
         cursor: pointer;
     }
 
     &__button-icon {
         width: 27px;
+    }
+
+    &__button-mobile {
+        display: none;
     }
 
     .navigation {
@@ -46,11 +51,11 @@
 
         &__list-item {
             font-size: 18px;
-            text-transform: capitalize;  
+            text-transform: capitalize;
             transition: all .2s;
 
             &:hover {
-                transform: translateY(-5px); 
+                transform: translateY(-5px);
             }
         }
 
@@ -77,5 +82,35 @@
                 transform: rotate(180deg);
             }
         }
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .header {
+        &__socials {
+            display: none;
+        }
+
+        &__socials {
+            display: none;
+        }
+
+        &__button-search {
+            display: none;
+        }
+
+        &__button-mobile {
+            display: block;
+        }
+
+        .navigation {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .header {
+        padding: 20px 0;
     }
 }

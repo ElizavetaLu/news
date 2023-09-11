@@ -1,16 +1,32 @@
-import { SyntheticEvent, useState } from "react";
+import { Dispatch, SyntheticEvent } from "react";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 import { ISearchInterface } from "../../interfacesAndTypes";
+import { news, setSearchTerm } from "../../store/actions/actionCreators";
 import "./SearchInput.scss";
 
-const SearchInput = ({ placeholder, light, action }: ISearchInterface) => {
 
-    const [searchTerm, setSearchTerm] = useState<string>('');
+const SearchInput = ({ value, setValue, placeholder, light, action }: ISearchInterface) => {
+
+    const { title } = useParams();
+    const dispatch: Dispatch<any> = useDispatch();
+
 
     const onSearch = (e: SyntheticEvent) => {
         e.preventDefault();
-        if (action) { action() }
 
-        //request data  
+        if (!value.trim()) return;
+
+
+        dispatch(setSearchTerm(value));
+
+        dispatch(news(true, {
+            category: title,
+            page: null,
+            searchTerm: value
+        }))
+
+        if (action) { action() }
     }
 
 
@@ -20,8 +36,8 @@ const SearchInput = ({ placeholder, light, action }: ISearchInterface) => {
                 className={`search-news__input ${light && 'search-news__input--light'}`}
                 type="text"
                 placeholder={placeholder}
-                value={searchTerm}
-                onChange={e => setSearchTerm(e.target.value)}
+                value={value}
+                onChange={e => setValue(e.target.value)}
             />
             <button type="submit" className="search-news__btn">
                 <img

@@ -5,6 +5,7 @@
 
     &__text {
         text-transform: capitalize;
+        text-align: center;
         font-size: 50px;
         font-family: 'Merriweather';
         word-spacing: 10px;
@@ -12,6 +13,22 @@
 
         &--light{
             color: #fff;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .logo {
+        &__text {
+            font-size: 40px; 
+        }
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .logo {
+        &__text {
+            font-size: 35px; 
         }
     }
 }

@@ -1,17 +1,25 @@
-import { ICardData } from "../../interfacesAndTypes";
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import useInfiniteScroll from "../../hooks/useInfiniteScroll";
+import { ICardData } from "../../interfacesAndTypes";
 import DataFetchingError from "../../components/data-fetching-error/DataFetchingError";
 import SearchInput from "../../components/search-input/SearchInput";
 import Container from "../../components/container/Container";
 import NewsCard from "../../components/cards/news/NewsCard";
 import Loader from "../../components/loader/Loader";
-import { test } from "../../test";
 import "./SelectedTopic.scss";
+
 
 
 const SelectedTopic = () => {
 
-    const [data, isFetching, isErrorOccured, totalPages] = useInfiniteScroll()
+    const { title } = useParams();
+    const [value, setValue] = useState('');
+
+    const { isFetching, isErrorOccured, totalPages } = useInfiniteScroll(title, value);
+
+    const { searchTerm, data } = useSelector((state: any) => state.news);
 
 
     return (
@@ -19,17 +27,19 @@ const SelectedTopic = () => {
             <main className="selected-topic">
 
                 <div className="selected-topic__data">
-                    <NewsCard large cardData={test[0]} />
 
                     <div className="selected-topic__search">
-                        <SearchInput placeholder="Search news"/>
+                        <SearchInput
+                            value={value}
+                            setValue={setValue}
+                            placeholder="Search by title"
+                        />
                     </div>
 
                     <div className="selected-topic__data-list">
                         {
-                            test?.map((item: ICardData, i: number) => {
-                                if (i === 0) return null;
-                                return <NewsCard key={i} vertical cardData={item} />
+                            data?.map((item: ICardData) => {
+                                return <NewsCard key={item.article_id} vertical cardData={item} />
                             })
                         }
                         {
@@ -45,7 +55,10 @@ const SelectedTopic = () => {
                             </div>
                         }
                         {
-                            totalPages === 0 && <p>No data was found</p>
+                            (totalPages === 0 && !searchTerm) && <p>No data was found</p>
+                        }
+                        {
+                            (totalPages === 0 && searchTerm) && <p>No data was found with such search term in current category</p>
                         }
                     </div>
                 </div>
@@ -54,4 +67,4 @@ const SelectedTopic = () => {
     );
 };
 
-export default SelectedTopic;
+export default SelectedTopic; 

@@ -28,3 +28,9 @@
         grid-area: 1 / 4 / 2 / 6;
     }
 }
+
+@media screen and (max-width: 600px) {
+    .news-section {
+        margin-bottom: $space-between-sections;
+    }
+}
