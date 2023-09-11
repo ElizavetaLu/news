@@ -2,9 +2,9 @@ import NewsCard from "../../../../components/cards/news/NewsCard";
 import SectionTitle from "../../../../components/section-title/SectionTitle";
 import { ICardData, INewsSection } from "../../../../interfacesAndTypes";
 import "./NewsSection.scss";
+ 
 
-// const NewsSection = ({ title, data }: INewsSection) => {
-const NewsSection = ({ title, data }: any) => {
+const NewsSection = ({ title, data }: INewsSection) => {
 
     return (
         <section className="news-section">
@@ -14,16 +14,15 @@ const NewsSection = ({ title, data }: any) => {
                 <NewsCard large cardData={data[0]} />
 
                 {/* <div className="news-setion__cards-column"> */}
-                    {
-                        // data.map((item: ICardData, i: number) => {
-                        data.map((item: any, i: number) => {
-                            if (i === 0 || i > 3) return null;
+                {
+                    data.map((item: ICardData, i: number) => {
+                        if (i === 0 || i > 3) return null;
 
-                            return (
-                                <NewsCard key={i} horizontal cardData={item} />
-                            )
-                        })
-                    }
+                        return (
+                            <NewsCard key={item.article_id} horizontal cardData={item} />
+                        )
+                    })
+                }
                 {/* </div> */}
             </div>
         </section>

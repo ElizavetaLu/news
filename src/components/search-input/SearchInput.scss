@@ -11,10 +11,7 @@
 
         &--light {
             border-bottom: 2px solid #fff;
-        }
-
-        &:focus {
-            border-bottom: 2px solid #000;
+            color: #fff;
         }
 
         &::placeholder {
@@ -23,6 +20,7 @@
     }
 
     &__btn {
+        cursor: pointer;
         margin-left: -40px;
     }
 
@@ -30,3 +28,31 @@
         width: 30px;
     }
 }
+
+@media screen and (max-width: 900px) {
+    .search-news {
+        &__input {
+            width: 70vw;
+        }
+    }
+} 
+
+@media screen and (max-width: 600px) {
+    .search-news {
+        &__input {
+            width: 80vw;
+            font-size: 18px;
+            padding-right: 40px;
+            padding-left: 6px;
+            padding-bottom: 2px;
+        }
+
+        &__btn { 
+            margin-left: -25px;
+        }
+    
+        &__btn-icon {
+            width: 20px;
+        }
+    }
+} 

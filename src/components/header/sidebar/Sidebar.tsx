@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { showSidebar } from "../../../store/actions/actionCreators";
 import { navigation } from "../../../data";
 import "./Sidebar.scss";
+import LinkWithOptions from "./link-with-options/LinkWithOptions";
 
 
 const Sidebar = () => {
@@ -25,6 +26,12 @@ const Sidebar = () => {
                 <div className="sidebar__navigation">
                     {
                         navigation.map(item => {
+
+                            if (item.options) {
+                                return <LinkWithOptions key={item.id} {...item} action={() => dispatch(showSidebar())} />
+                            }
+
+
                             return (
                                 <Link
                                     key={item.id}
@@ -32,7 +39,7 @@ const Sidebar = () => {
                                     className="sidebar__navigation-link"
                                     onClick={() => dispatch(showSidebar())}
                                 >
-                                    {item.name}
+                                    {item.name} 
                                 </Link>
                             )
                         })

@@ -16,6 +16,7 @@ const Footer = () => {
                     <div className="footer__navigation">
                         {
                             navigation.map(item => {
+                                if (item.options) return null;
                                 return (
                                     <Link key={item.id} to={item.path} className="footer__navigation-link">{item.name}</Link>
                                 )

@@ -13,26 +13,46 @@ export interface ILinkWithIcon {
     navigation: string,
 };
 
+export interface INavigationLink {
+    path: string,
+    name: string,
+    options: string[],
+    action: () => void
+};
+
+export interface INewsSection {
+    title: string,
+    data: ICardData[]
+};
+
 export interface ISearchInterface {
+    value: string,
+    setValue: (val: string) => void,
     placeholder: string,
     light?: boolean,
     action?: () => void
 }
 
 export interface ICardData {
-    author: string,
+    article_id: string,
+    category: string[],
     content: string,
+    country: string[],
+    creator: string[] | null,
     description: string,
-    publishedAt: string,
-    source: {
-        id: null | any,
-        name: string
-    },
+    image_url: string,
+    keywords: string[] | null,
+    language: string,
+    link: string,
+    pubDate: string,
+    source_id: string,
+    source_priority: number,
     title: string,
-    urlToImage: string
+    video_url: string | null,
 }
 
 export interface INewsCard {
+    lastNewsElementRef?: any,
     large?: boolean,
     horizontal?: boolean,
     vertical?: boolean,
@@ -49,12 +69,11 @@ export interface INewsSection {
 export interface IGetLatestHeadlines {
     lang?: string,
     pageSize: number,
-    page: number
+    page: number | null
 }
 
 export interface INewsRequestPayload {
     category?: string,
-    pageSize: number,
-    page: number,
+    page: number | null,
     searchTerm?: string,
 }

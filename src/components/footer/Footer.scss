@@ -1,6 +1,6 @@
 @import "../../variables";
 
-.footer { 
+.footer {
     height: 337;
     background-color: #0d0d0d;
     padding: 70px 0;
@@ -20,6 +20,7 @@
 
     &__navigation-link {
         font-size: 18px;
+        white-space: nowrap;
         color: #e6e6e6;
         text-transform: capitalize;
         transition: all .2s;
@@ -72,5 +73,47 @@
     &__rights {
         font-size: 14px;
         text-align: center;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .footer {
+
+        &__top-row {
+            flex-direction: column;
+        }
+
+        .navigation {
+            display: none;
+        }
+
+        .subscribe {
+            flex-direction: column;
+        }
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    .footer {
+        &__navigation {
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .subscribe {
+            &__input {
+                min-width: 70%; 
+                font-size: 16px;
+            }
+            &__button { 
+                padding: 3px 7px; 
+            }
+    
+            &__button-icon {
+                width: 25px;
+            }
+        }
     }
 }
