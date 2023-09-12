@@ -1,13 +1,5 @@
 @import "../../variables";
-
-.loader-container,
-.error-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-top: 10%;
-}
-
+ 
 .selected-topic {
     margin-top: 60px;
     margin-bottom: $space-between-sections;

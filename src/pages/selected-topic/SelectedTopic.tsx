@@ -3,11 +3,10 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import useInfiniteScroll from "../../hooks/useInfiniteScroll";
 import { ICardData } from "../../interfacesAndTypes";
-import DataFetchingError from "../../components/data-fetching-error/DataFetchingError";
+import FetchingProgress from "../../components/fetching-progress/FetchingProgress";
 import SearchInput from "../../components/search-input/SearchInput";
 import Container from "../../components/container/Container";
 import NewsCard from "../../components/cards/news/NewsCard";
-import Loader from "../../components/loader/Loader";
 import "./SelectedTopic.scss";
 
 
@@ -38,28 +37,22 @@ const SelectedTopic = () => {
 
                     <div className="selected-topic__data-list">
                         {
-                            data?.map((item: ICardData) => {
-                                return <NewsCard key={item.article_id} vertical cardData={item} />
+                            data?.map((item: ICardData, i: number) => {
+                                return <NewsCard key={i} vertical cardData={item} />
                             })
                         }
+
+                        <FetchingProgress
+                            isFetching={isFetching}
+                            isErrorOccured={isErrorOccured}
+                            totalPages={totalPages}
+                            searchTerm={searchTerm}
+                        />
+
                         {
-                            isFetching
-                            && <div className="loader-container">
-                                <Loader />
-                            </div>
+                            (totalPages === 0 && searchTerm) && <div className='not-found'>No data was found with such search term in current category</div>
                         }
-                        {
-                            isErrorOccured
-                            && <div className="error-container">
-                                <DataFetchingError />
-                            </div>
-                        }
-                        {
-                            (totalPages === 0 && !searchTerm) && <p>No data was found</p>
-                        }
-                        {
-                            (totalPages === 0 && searchTerm) && <p>No data was found with such search term in current category</p>
-                        }
+
                     </div>
                 </div>
             </main>

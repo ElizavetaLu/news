@@ -23,25 +23,29 @@ const SelectedNews = () => {
         title,
     } = state;
 
+
     const splitedContent = () => {
+
+        if (!content) return 'No data was found by current topic.'
+
         let formattedText = '';
-        let dotsCount = 0; 
-        
+        let dotsCount = 0;
+
         for (let i = 0; i < content?.length; i++) {
-            if (dotsCount < 3) { 
+            if (dotsCount < 3) {
                 formattedText += content[i]
- 
+
                 if (content[i - 1] + content[i] === '. ') {
                     dotsCount++
                 }
-            } else { 
+            } else {
                 formattedText += `\n\t ${content[i]}`
                 dotsCount = 0;
             }
         }
 
         return formattedText
-    } 
+    }
 
     return (
         <Container>
@@ -65,7 +69,7 @@ const SelectedNews = () => {
                 <Socials />
 
                 <img className="news__image" src={`${image_url ? image_url : "/images/dummy.png"}`} alt="" />
-                <div className="news__description">{description}</div> 
+                <div className="news__description">{description}</div>
                 <div className="news__summary">{splitedContent()}</div>
                 <div className="news__category">{category && category.join(', ')}</div>
                 <div className="news__link">Origin link: <Link to={link} className="news__link-url">{link}</Link></div>

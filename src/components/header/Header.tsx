@@ -24,9 +24,9 @@ const Header = () => {
                         <button className="header__button-menu" onClick={() => dispatch(showSidebar())}>
                             <img className="header__button-icon" src="/images/icons/menu.png" alt="Menu" />
                         </button>
-                        <button className="header__button-search">
+                        <Link to="search" className="header__button-search">
                             <img className="header__button-icon" src="/images/icons/search.png" alt="Search" />
-                        </button>
+                        </Link>
                     </div>
 
                     <Logo />
@@ -34,9 +34,9 @@ const Header = () => {
                     <div className="header__socials">
                         <Socials />
                     </div>
-                    <button className="header__button-mobile">
+                    <Link to="search" className="header__button-mobile">
                         <img className="header__button-icon" src="/images/icons/search.png" alt="Search" />
-                    </button>
+                    </Link>
                 </div>
 
                 <nav className="navigation">

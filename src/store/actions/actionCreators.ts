@@ -1,34 +1,60 @@
-import axios from "axios";
 import { INewsRequestPayload } from "../../interfacesAndTypes";
-import { getLatestHeadlines, getNews } from "../../services"
+import { getBriefSectionNews, getNews } from "../../services"
 import {
-    LATEST_HEADLINES_IS_ERROR_OCCURRED,
-    LATEST_HEADLINES_IS_FETCHING,
-    GET_LATEST_HEADLINES,
-    SHOW_SIDEBAR,
-    GET_NEWS,
+    GET_BRIEF_SECTION_NEWS,
+    BRIEF_SECTION_NEWS_IS_FETCHING,
+    BRIEF_SECTION_NEWS_IS_ERROR_OCCURRED,
+    SET_NEWS_SEARCH_TERM,
     NEWS_ERROR_OCCURRED,
     NEWS_ARE_FETCHING,
-    SET_NEWS_SEARCH_TERM,
-    SET_NEXT_PAGE_NUMBER,
+    SHOW_SIDEBAR,
+    GET_NEWS,
 } from "./types";
 
 
-export const latestHeadlines = (payload: any) => async (dispatch: any) => {
+export const briefSectionNews = (payload: INewsRequestPayload) => async (dispatch: any) => {
+    dispatch({
+        type: BRIEF_SECTION_NEWS_IS_FETCHING,
+        payload: {
+            isFetching: true,
+            category: payload.category
+        }
+    });
 
     try {
-        dispatch({ type: LATEST_HEADLINES_IS_ERROR_OCCURRED, payload: false });
+        dispatch({
+            type: BRIEF_SECTION_NEWS_IS_ERROR_OCCURRED,
+            payload: {
+                isError: false,
+                category: payload.category
+            }
+        });  
 
-        dispatch({ type: LATEST_HEADLINES_IS_FETCHING });
 
-        const { data } = await getLatestHeadlines(payload);
+        const { data } = await getBriefSectionNews(payload);
 
-        dispatch({ type: GET_LATEST_HEADLINES, payload: data.articles });
-        dispatch({ type: LATEST_HEADLINES_IS_FETCHING });
+
+        dispatch({ type: GET_BRIEF_SECTION_NEWS, payload: { data: data.results, category: payload.category } });
 
     } catch (error) {
-        dispatch({ type: LATEST_HEADLINES_IS_FETCHING });
-        dispatch({ type: LATEST_HEADLINES_IS_ERROR_OCCURRED, payload: true });
+
+        dispatch({
+            type: BRIEF_SECTION_NEWS_IS_ERROR_OCCURRED,
+            payload: {
+                isError: true,
+                category: payload.category
+            }
+        }); 
+    }
+    finally {
+
+        dispatch({
+            type: BRIEF_SECTION_NEWS_IS_FETCHING,
+            payload: {
+                isFetching: false,
+                category: payload.category
+            }
+        });
     }
 }
 
@@ -47,7 +73,7 @@ export const news = (isNewDataRequest: boolean, payload: INewsRequestPayload) =>
         const totalResults = data.totalResults;
 
         const pagesAmount = totalResults ? Math.ceil(totalResults / 10) : 0;
- 
+
         dispatch({
             type: GET_NEWS,
             payload: {
@@ -67,7 +93,6 @@ export const news = (isNewDataRequest: boolean, payload: INewsRequestPayload) =>
     }
 }
 
-// export const setPage = () => ({ type: SET_PAGE_NUMBER });
 export const setSearchTerm = (payload: string) => ({ type: SET_NEWS_SEARCH_TERM, payload });
 
 export const showSidebar = () => ({ type: SHOW_SIDEBAR });

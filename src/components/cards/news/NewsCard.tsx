@@ -15,10 +15,8 @@ const NewsCard = ({ lastNewsElementRef, large, horizontal, vertical, cardData }:
         image_url,
         pubDate,
         title
-    } = cardData;
-
-    console.log(image_url)
-
+    } = cardData; 
+ 
     const titleString = title.length > 78 ? title.slice(0, 78) + '...' : title;
     const descriptionString = description?.length > 500 ? description.slice(0, 500) + '...' : description;
 
@@ -40,7 +38,7 @@ const NewsCard = ({ lastNewsElementRef, large, horizontal, vertical, cardData }:
                         <h3 className={`news-card__title news-card__title--${currentClass}`}>{titleString}</h3>
                         {
                             large &&
-                            <p className={`news-card__brief-info news-card__brief-info--${currentClass}`}>{descriptionString}</p >
+                            <p className="news-card__brief-info">{descriptionString}</p >
                         }
                     </div>
 
