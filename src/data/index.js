@@ -33,7 +33,7 @@ export const navigation = [
     {
         id: 1,
         name: 'categories',
-        path: '',
+        path: '#',
         options: topics
     },
     {

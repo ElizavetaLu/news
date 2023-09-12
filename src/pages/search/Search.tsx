@@ -2,21 +2,20 @@ import { useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { ICardData } from "../../interfacesAndTypes";
-import DataFetchingError from "../../components/data-fetching-error/DataFetchingError";
+import useInfiniteScroll from "../../hooks/useInfiniteScroll";
+import FetchingProgress from "../../components/fetching-progress/FetchingProgress";
 import SearchInput from "../../components/search-input/SearchInput";
 import Container from "../../components/container/Container";
 import NewsCard from "../../components/cards/news/NewsCard";
-import Loader from "../../components/loader/Loader";
 import "./Search.scss";
-import useInfiniteScroll from "../../hooks/useInfiniteScroll";
 
 
 const Search = () => {
     const { title } = useParams();
-    const { state } = useLocation()
+    const { state } = useLocation();
 
     const [value, setValue] = useState(state ? state : '');
-    const { isFetching, isErrorOccured, totalPages } = useInfiniteScroll(title, value)
+    const { isFetching, isErrorOccured, totalPages } = useInfiniteScroll(title, value);
     const { data } = useSelector((state: any) => state.news);
 
 
@@ -29,32 +28,25 @@ const Search = () => {
                     <SearchInput
                         value={value}
                         setValue={setValue}
-                        placeholder="Search on World News..." />
+                        placeholder="Search on World News..."
+                    />
                 </div>
 
                 <div className="search__results">
                     {
-                        data.map((item: ICardData) => {
+                        data.map((item: ICardData, i: number) => {
                             return (
-                                <NewsCard key={item.article_id} large cardData={item} />
+                                <NewsCard key={i} vertical cardData={item} />
                             )
                         })
                     }
-                    {
-                        isFetching
-                        && <div className="loader-container">
-                            <Loader />
-                        </div>
-                    }
-                    {
-                        isErrorOccured
-                        && <div className="error-container">
-                            <DataFetchingError />
-                        </div>
-                    }
-                    {
-                        (totalPages === 0) && <p>No data was found</p>
-                    }
+
+                    <FetchingProgress
+                        isFetching={isFetching}
+                        isErrorOccured={isErrorOccured}
+                        totalPages={totalPages}
+                        searchTerm={value}
+                    />
                 </div>
             </main>
         </Container>

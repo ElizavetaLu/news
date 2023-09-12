@@ -23,8 +23,8 @@
         background-position: center;
 
         &--large {
-            height: 500px;
-            width: 350px;
+            height: 501.5px;
+            min-width: 350px;
         }
 
         &--horizontal {
@@ -36,19 +36,6 @@
             max-width: 220px;
             height: 220px;
         }
-    }
-
-    .bg {
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        background: rgb(244, 244, 244);
-        background: linear-gradient(90deg, rgba(244, 244, 244, 1) 0%, rgba(255, 255, 255, 1) 32%, rgba(255, 255, 255, 1) 68%, rgba(244, 244, 244, 1) 100%);
-    }
-
-    &__image {
-        width: 100%;
-        z-index: 1;
     }
 
     &__data {
@@ -96,12 +83,14 @@
     &__author {
         color: #606060;
         text-transform: capitalize;
+        max-height: 30px;
+        overflow: hidden;
+        overflow-y: scroll;
 
         &--horizontal,
         &--vertical {
             font-size: 14px;
         }
-
     }
 
     &__title {
@@ -116,6 +105,12 @@
         &--vertical {
             font-size: 16px
         }
+    }
+
+    &__brief-info {
+        max-height: 234px;
+        overflow: hidden;
+        overflow-y: scroll;
     }
 
     &__navigate {
@@ -175,6 +170,71 @@
         &--horizontal,
         &--vertical {
             font-size: 10px;
+        }
+    }
+}
+
+
+
+
+@media screen and (max-width: 1170px) {
+    .news-card {
+        &__image { 
+    
+            &--large { 
+                min-width: 250px;
+            } 
+        }
+
+    &__brief-info {
+        max-height: 150px; 
+    }
+    } 
+}
+
+
+@media screen and (max-width: 900px) {
+    .news-card {
+        &--vertical {
+            max-width: 160px;
+        }
+
+        &__image {
+            &--vertical {
+                max-width: 160px;
+                height: 160px;
+            }
+        }
+
+        &__data {
+            &--vertical {
+                padding: 10px 0;
+                max-height: 170px;
+            }
+        }
+
+        &__text {
+            &--vertical {
+                gap: 6px;
+            }
+        }
+
+        &__category {
+            font-size: 12px;
+        }
+
+        &__author {
+            &--vertical {
+                font-size: 13px;
+            }
+        }
+
+        &__title {
+            max-height: 150px;
+
+            &--vertical {
+                font-size: 14px
+            }
         }
     }
 }

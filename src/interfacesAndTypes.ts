@@ -20,11 +20,6 @@ export interface INavigationLink {
     action: () => void
 };
 
-export interface INewsSection {
-    title: string,
-    data: ICardData[]
-};
-
 export interface ISearchInterface {
     value: string,
     setValue: (val: string) => void,
@@ -64,16 +59,23 @@ export interface INewsSection {
     data: ICardData[],
 }
 
-
-// API payload 
-export interface IGetLatestHeadlines {
-    lang?: string,
-    pageSize: number,
-    page: number | null
+export interface IFetchingProgress {
+    isFetching: boolean,
+    isErrorOccured: boolean,
+    totalPages: number,
+    searchTerm?: string
 }
 
+
+// API payload  
 export interface INewsRequestPayload {
     category?: string,
-    page: number | null,
+    page?: number | null,
+    size?: number,
     searchTerm?: string,
+}
+
+//hooks
+export interface Args extends IntersectionObserverInit {
+    freezeOnceVisible?: boolean
 }

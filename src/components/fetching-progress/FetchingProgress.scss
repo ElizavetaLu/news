@@ -1,0 +1,13 @@
+.loader-container,
+.error-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+}
+
+.not-found {
+    text-align: center;
+    color: #6c6c6c;
+    font-size: 18px;
+}

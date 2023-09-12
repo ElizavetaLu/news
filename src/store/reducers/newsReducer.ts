@@ -8,7 +8,7 @@ import {
 
 const initialState = {
     isFetching: false,
-    isErrorOccured: false,
+    isErrorOccured: true,
     totalPages: null,
     nextPageNumber: null,
     searchTerm: '',

@@ -31,7 +31,6 @@ const Sidebar = () => {
                                 return <LinkWithOptions key={item.id} {...item} action={() => dispatch(showSidebar())} />
                             }
 
-
                             return (
                                 <Link
                                     key={item.id}
@@ -39,7 +38,7 @@ const Sidebar = () => {
                                     className="sidebar__navigation-link"
                                     onClick={() => dispatch(showSidebar())}
                                 >
-                                    {item.name} 
+                                    {item.name}
                                 </Link>
                             )
                         })
